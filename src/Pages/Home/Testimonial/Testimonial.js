@@ -37,7 +37,7 @@ const Testimonial = () => {
 				<div>
 					<h5 className="text-primary pb-2">Testimonial </h5>
 					<h1 className="sm:text-3xl text-2xl font-semibold ">
-						What Our Patients Says
+						What Our Patients Say
 					</h1>
 				</div>
 				<img src={quote} className="md:w-44 w-24 " alt="quote" />

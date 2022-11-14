@@ -1,8 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
 import About from "../About/About";
-import Appointment from "../Appointment/Appointment";
 import ContactUs from "../ContactUs/ContactUs";
 import Root from "../Layout/Root";
+import Appointment from "../Pages/Appointment/Appointment/Appointment";
 import Home from "../Pages/Home/Home/Home";
 import Login from "../Pages/LoginPage/Login/Login";
 import Register from "../Pages/LoginPage/Register/Register";

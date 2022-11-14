@@ -9,11 +9,11 @@ const Navbar = () => {
 					Home
 				</NavLink>
 			</li>
-			<li>
+			{/* <li>
 				<NavLink className="rounded-md" to="/about">
 					About
 				</NavLink>
-			</li>
+			</li> */}
 			<li>
 				<NavLink className="rounded-md" to="/appointment">
 					Appointment
@@ -40,8 +40,12 @@ const Navbar = () => {
 	return (
 		<div className="max-w-[1440px] mx-auto">
 			<div className="navbar bg-base-100">
-				<div className="navbar-start">
-					<div className="dropdown">
+				<div className="navbar-start flex justify-between w-full">
+					<Link to="/" className="btn btn-ghost normal-case text-xl">
+						Doctors Portal
+					</Link>
+					<div className="dropdown  dropdown-end ">
+						{" "}
 						<label tabIndex={0} className="btn btn-ghost lg:hidden">
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -63,9 +67,6 @@ const Navbar = () => {
 							{menuItems}
 						</ul>
 					</div>
-					<Link to="/" className="btn btn-ghost normal-case text-xl">
-						Doctors Portal
-					</Link>
 				</div>
 				<div className="navbar-end hidden lg:flex">
 					<ul className="menu menu-horizontal p-0">{menuItems}</ul>
