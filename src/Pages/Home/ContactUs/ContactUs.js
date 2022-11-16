@@ -16,27 +16,27 @@ const ContactUs = () => {
 					Stay connected with us
 				</h1>
 			</div>
-			<div className="flex flex-col gap-4  items-center">
+			<form className="flex flex-col gap-4  items-center">
 				<input
 					type="Email"
 					required
-					placeholder="Email Address"
+					placeholder="Email Address*"
 					className="input w-full max-w-sm"
 				/>
 				<input
 					type="text"
-					placeholder="Subject"
+					placeholder="Subject*"
 					required
 					className="input w-full max-w-sm"
 				/>
 				<textarea
 					className="textarea w-full max-w-sm"
-					placeholder="Your message"
+					placeholder="Your message*"
 					required></textarea>
-				<button className=" bg-gradient-to-r from-primary text-white to-secondary btn-primary py-2 px-5 rounded-md ">
+				<button type="submit" className=" bg-gradient-to-r from-primary text-white to-secondary btn-primary py-2 px-5 rounded-md ">
 					Submit
 				</button>
-			</div>
+			</form>
 		</section>
 	);
 };

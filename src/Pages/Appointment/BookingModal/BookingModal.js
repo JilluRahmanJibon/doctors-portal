@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { format } from "date-fns";
+import { AuthContext } from "../../../Contexts/AuthProvider";
 
 const BookingModal = ({ treatment, selectedDate, setTreatment }) => {
+	const { user } = useContext(AuthContext)
 	const date = format(selectedDate, "PP");
 	const handleBooking = e => {
 		e.preventDefault();
@@ -40,14 +42,14 @@ const BookingModal = ({ treatment, selectedDate, setTreatment }) => {
 					<form onSubmit={handleBooking} className="flex flex-col gap-4">
 						<input
 							required
-							value={date}
+							defaultValue={date}
 							disabled
 							type="text"
 							className="input w-full border-2 bg-gray-300  "
 						/>
 						<select name="slot" className="select select-bordered w-full  ">
 							{treatment.slots?.map((slot, idx) => (
-								<option key={idx} value={slot}>
+								<option key={idx} defaultValue={slot}>
 									{slot}
 								</option>
 							))}
@@ -55,6 +57,7 @@ const BookingModal = ({ treatment, selectedDate, setTreatment }) => {
 
 						<input
 							name="name"
+							defaultValue={user?.displayName}
 							required
 							type="text"
 							placeholder="Full Name"
@@ -64,6 +67,8 @@ const BookingModal = ({ treatment, selectedDate, setTreatment }) => {
 							name="email"
 							required
 							type="email"
+							defaultValue={user?.email}
+							disabled
 							placeholder="Email"
 							className="input w-full border-2   border-gray-200 "
 						/>
