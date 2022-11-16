@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { BiError } from "react-icons/bi";
 import { AuthContext } from "../../../Contexts/AuthProvider";
+import toast from "react-hot-toast";
 
 const Login = () => {
 	const { loginUser, continueWithGoogle } = useContext(AuthContext)
@@ -35,6 +36,9 @@ const Login = () => {
 			console.log(err);
 		})
 
+	}
+	const handleResetPass = () => {
+		toast.error('sorry this feature are not available at the moment please try again')
 	}
 	return (
 		<div className="h-[800px] flex justify-center items-center">
@@ -83,7 +87,7 @@ const Login = () => {
 							</p>
 						)}
 						<label className="mt-1 mb-4 inline-block">
-							<span className="cursor-pointer">Forgot Password? </span>
+							<span onClick={handleResetPass} className="cursor-pointer">Forgot Password? </span>
 						</label>
 					</div>
 

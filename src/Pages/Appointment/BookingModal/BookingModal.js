@@ -1,27 +1,41 @@
 import React, { useContext } from "react";
 import { format } from "date-fns";
 import { AuthContext } from "../../../Contexts/AuthProvider";
+import toast from "react-hot-toast";
 
-const BookingModal = ({ treatment, selectedDate, setTreatment }) => {
+const BookingModal = ({ treatment, selectedDate, setTreatment, refetch }) => {
 	const { user } = useContext(AuthContext)
 	const date = format(selectedDate, "PP");
-	const handleBooking = e => {
+	const handleBooking = async e => {
 		e.preventDefault();
 		const form = e.target;
 		const slot = form.slot.value;
 		const name = form.name.value;
 		const email = form.email.value;
 		const number = form.number.value;
-		setTreatment(null);
+
 		const booking = {
 			appointmentDate: date,
-			treatment: name,
+			treatment: treatment.name,
 			slot,
-			patient: treatment.name,
+			patient: name,
 			email,
 			number,
 		};
-		console.log(booking);
+		fetch('http://localhost:5000/bookings', {
+			method: 'POST',
+			headers: {
+				'content-type': 'application/json'
+			}, body: JSON.stringify(booking)
+		}).then(res => res.json()).then(data => {
+			if (data.acknowledged) {
+				toast.success('Your booking is Confirmed')
+				setTreatment(null);
+				refetch()
+			} else {
+				toast.error(data.message)
+			}
+		})
 	};
 	return (
 		<div>
@@ -58,6 +72,7 @@ const BookingModal = ({ treatment, selectedDate, setTreatment }) => {
 						<input
 							name="name"
 							defaultValue={user?.displayName}
+							disabled={user?.displayName}
 							required
 							type="text"
 							placeholder="Full Name"

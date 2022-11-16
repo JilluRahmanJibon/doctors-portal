@@ -12,7 +12,7 @@ const AppointmentOption = ({ option, setTreatment }) => {
 				</p>
 				<div className="card-actions ">
 					<label
-						disabled={slots.length === 0}
+						disabled={slots?.length === 0}
 						onClick={() => setTreatment(option)}
 						htmlFor="booking-modal"
 						className="btn text-white btn-primary font-semibold">
